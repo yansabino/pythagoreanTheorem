@@ -15,7 +15,7 @@ export const StyledImage = styled.img`
     width: 200px;
     height:200px;
 `
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
