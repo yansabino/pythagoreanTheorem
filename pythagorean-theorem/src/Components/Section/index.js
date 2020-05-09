@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   SectionContainer,
@@ -8,7 +8,6 @@ import {
 import Triangle from "../../images/kisspng-right-triangle-hypotenuse-mathematics-trigonometry-5b39d436497ff0.4595208215305165343011.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-
 
 const inputForm = [
   {
@@ -29,34 +28,37 @@ const url = "https://atlas-231814.appspot.com/calcula";
 
 const Section = () => {
   const [form, setForm] = useState({});
-  const [response, setResponse] = useState({})
+  const [response, setResponse] = useState({});
 
-  const handleInputChange = (e) =>
-  setForm({
-    ...form,
-    [e.target.name]: e.target.value,
-  });
+  const handleInputChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    })
+  };
 
   const calculate = (e) => {
-    e.preventDefault()
-
+    e.preventDefault();
+    if(form >= 0){
+      
+      window.alert("Insira apenas números positivos")
+    }else{
+      
     const request = axios.post(url, form);
-    
-    
+    console.log(request)
     request
-      .then(() => {
-        setResponse(response)
+      .then((response) => {
+        setResponse(response.data);
         window.alert("Dados inputados com sucesso");
-        
-        console.log(response)
-        
+
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
         window.alert("Houve um erro na hora de enviar os dados");
       });
-
-      setForm({})
+    }  
+    setForm({});
   };
 
   const formRender = inputForm.map((input) => (
@@ -64,6 +66,8 @@ const Section = () => {
       variant="outlined"
       margin="normal"
       autoFocus
+      min="1"
+      step="1"
       fullWidth
       onChange={handleInputChange}
       name={input.name}
