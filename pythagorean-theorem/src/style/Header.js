@@ -22,6 +22,5 @@ export const StyledTitle = styled.h1`
 export const StyledImage = styled.img`
     width: 60px;
     height: 60px;
-    border-radius: 50%;
-    
+    border-radius: 50%;    
 `

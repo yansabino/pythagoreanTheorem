@@ -6,7 +6,7 @@ export const SectionContainer = styled.div`
     align-items: center;
     margin: 100px auto 0;
     padding: 0;
-    position: fixed;
+    
     width: 100%;
     z-index: 0;
 `
