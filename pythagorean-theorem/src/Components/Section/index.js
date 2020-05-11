@@ -4,11 +4,14 @@ import {
   SectionContainer,
   StyledImage,
   FormContainer,
+  StyledUnorderedList,
+  StyledListItem,
 } from "../../style/Section";
 import Triangle from "../../images/kisspng-right-triangle-hypotenuse-mathematics-trigonometry-5b39d436497ff0.4595208215305165343011.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import ResponseCard  from '../ResponseCard'
+import ResponseCard from "../ResponseCard";
+
 const inputForm = [
   {
     name: "cat_op",
@@ -36,12 +39,12 @@ const Section = () => {
     setForm({
       ...form,
       [e.target.name]: Number(e.target.value),
-    }); 
+    });
   };
 
   const calculate = (e) => {
     e.preventDefault();
-    
+
     if (form.cat_op <= 0 || form.cat_adj <= 0) {
       window.alert("Insira apenas números positivos");
     } else {
@@ -49,8 +52,8 @@ const Section = () => {
 
       request
         .then((response) => {
-          setCatOp(response.data.cat_op)
-          setCatAdj(response.data.cat_adj)
+          setCatOp(response.data.cat_op);
+          setCatAdj(response.data.cat_adj);
           setHipotenusa(response.data.hip.toFixed(1));
           window.alert("Calculo realizado com sucesso!");
         })
@@ -80,20 +83,26 @@ const Section = () => {
   //    catOp: catOp,
   //    catAdj: catAdj,
   //    hip: hipotenusa
-  //  } 
+  //  }
 
   return (
     <SectionContainer>
       <StyledImage src={Triangle} alt="triangulo" />
       <FormContainer onSubmit={calculate}>
         {renderedForm}
-        <Button color="secondary" type="submit">
+        <Button color="primary" type="submit" variant="outlined" style={{margin: 20}}>
           Calcular
         </Button>
         {/* { responseObject &&  <ResponseCard hip={hipotenusa} catOp={catOp} catAdj={catAdj}/>}   */}
-        {catOp && <h1>Cateto Oposto (a): {catOp}</h1>}
-        {catAdj && <h1>Cateto Adjacente (b): {catAdj}</h1>}
-        {hipotenusa && <h1>Hipotenusa (c): {hipotenusa}</h1>}
+        <StyledUnorderedList>
+          {catOp && <StyledListItem>Cateto Oposto (a): {catOp}</StyledListItem>}
+          {catAdj && (
+            <StyledListItem>Cateto Adjacente (b): {catAdj}</StyledListItem>
+          )}
+          {hipotenusa && (
+            <StyledListItem>Hipotenusa (c): {hipotenusa}</StyledListItem>
+          )}
+        </StyledUnorderedList>
       </FormContainer>
     </SectionContainer>
   );

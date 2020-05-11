@@ -17,6 +17,7 @@ export const HeaderContainer = styled.header`
 export const StyledTitle = styled.h1`
     font-size: 60px;
     margin: 0 40px;
+    color: #0961B2
 `
 
 export const StyledImage = styled.img`
