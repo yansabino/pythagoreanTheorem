@@ -21,16 +21,16 @@ export const StyledTitle = styled.h1`
   color: #0961b2;
 
   @media ${device.mobileS} {
-    font-size: 15px;
+    font-size: 13px;
   }
   @media ${device.mobileM} {
-    font-size: 20px;
+    font-size: 18px;
   }
   @media ${device.mobileL} {
     font-size: 20px;
   }
   @media ${device.tablet} {
-    font-size: 35px;
+    font-size: 45px;
   }
 `;
 

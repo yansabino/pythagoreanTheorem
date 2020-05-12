@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from './Responsive/devices'
+import { device } from "./Responsive/devices";
 
 export const SectionContainer = styled.div`
   display: flex;
@@ -49,7 +49,6 @@ export const FormContainer = styled.form`
   @media ${device.mobileL} {
     width: 375px;
   }
-
 `;
 
 export const StyledUnorderedList = styled.ul`
@@ -57,10 +56,31 @@ export const StyledUnorderedList = styled.ul`
   width: 400px;
   padding: 10px;
   list-style-position: inside;
+  border: 1px solid #0961b2;
+
+  @media ${device.mobileS} {
+    width: 270px;
+  }
+  @media ${device.mobileM} {
+    width: 300px;
+  }
+  @media ${device.mobileL} {
+    width: 375px;
+  }
 `;
 
 export const StyledListItem = styled.li`
   padding: 5px 0;
   font-size: 30px;
   color: #0961b2;
+
+  @media ${device.mobileS} {
+    font-size: 20px;
+  }
+  @media ${device.mobileM} {
+    font-size: 20px;
+  }
+  @media ${device.mobileL} {
+    font-size: 20px;
+  }
 `;

@@ -1,13 +1,13 @@
-import React from 'react';
-import Main from './Components/Main'
-import {AppContainer} from './style/App'
+import React from "react";
+import Main from "./Components/Main";
+import { AppContainer } from "./style/App";
 
 const App = () => {
   return (
     <AppContainer>
-      <Main/>
+      <Main />
     </AppContainer>
   );
-}
+};
 
 export default App;

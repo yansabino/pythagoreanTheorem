@@ -10,7 +10,7 @@ import {
 import Triangle from "../../images/kisspng-right-triangle-hypotenuse-mathematics-trigonometry-5b39d436497ff0.4595208215305165343011.png";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import ResponseCard from "../ResponseCard";
+import Loader from "../Loader/index";
 
 const inputForm = [
   {
@@ -34,6 +34,7 @@ const Section = () => {
   const [hipotenusa, setHipotenusa] = useState("");
   const [catOp, setCatOp] = useState("");
   const [catAdj, setCatAdj] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     setForm({
@@ -48,6 +49,7 @@ const Section = () => {
     if (form.cat_op <= 0 || form.cat_adj <= 0) {
       window.alert("Insira apenas números positivos");
     } else {
+      setLoading(true);
       const request = axios.post(url, form);
 
       request
@@ -55,13 +57,14 @@ const Section = () => {
           setCatOp(response.data.cat_op);
           setCatAdj(response.data.cat_adj);
           setHipotenusa(response.data.hip.toFixed(1));
-          window.alert("Calculo realizado com sucesso!");
+          setLoading(false);
         })
         .catch(() => {
           window.alert("Houve um erro na hora de enviar os dados");
+          setLoading(false);
         });
     }
-    setForm({});
+    setForm({ cat_op: "", cat_adj: "" });
   };
 
   const renderedForm = inputForm.map((input) => (
@@ -75,35 +78,41 @@ const Section = () => {
       type={input.type}
       label={input.label}
       required={input.required}
+      value={form[input.name]}
       color="primary"
     />
   ));
 
-  //  const responseObject = {
-  //    catOp: catOp,
-  //    catAdj: catAdj,
-  //    hip: hipotenusa
-  //  }
+  const responseList =
+    catOp && catAdj && hipotenusa ? (
+      <StyledUnorderedList>
+        {catOp && <StyledListItem>Cateto Oposto (a): {catOp}</StyledListItem>}
+        {catAdj && (
+          <StyledListItem>Cateto Adjacente (b): {catAdj}</StyledListItem>
+        )}
+        {hipotenusa && (
+          <StyledListItem>Hipotenusa (c): {hipotenusa}</StyledListItem>
+        )}
+      </StyledUnorderedList>
+    ) : (
+      loading && <Loader />
+    );
 
   return (
     <SectionContainer>
       <StyledImage src={Triangle} alt="triangulo" />
       <FormContainer onSubmit={calculate}>
         {renderedForm}
-        <Button color="primary" type="submit" variant="outlined" style={{margin: 20}}>
+        <Button
+          color="primary"
+          type="submit"
+          variant="outlined"
+          style={{ margin: 20 }}
+        >
           Calcular
         </Button>
-        {/* { responseObject &&  <ResponseCard hip={hipotenusa} catOp={catOp} catAdj={catAdj}/>}   */}
-        <StyledUnorderedList>
-          {catOp && <StyledListItem>Cateto Oposto (a): {catOp}</StyledListItem>}
-          {catAdj && (
-            <StyledListItem>Cateto Adjacente (b): {catAdj}</StyledListItem>
-          )}
-          {hipotenusa && (
-            <StyledListItem>Hipotenusa (c): {hipotenusa}</StyledListItem>
-          )}
-        </StyledUnorderedList>
       </FormContainer>
+      {responseList}
     </SectionContainer>
   );
 };
