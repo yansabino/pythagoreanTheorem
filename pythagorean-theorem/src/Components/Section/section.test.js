@@ -1,7 +1,9 @@
 import React from "react";
-import Enzyme, { mount } from "enzyme";
+import Enzyme, { mount, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Section from "./index";
+import shadows from "@material-ui/core/styles/shadows";
+import { FormContainer } from "../../style/Section";
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("Section", () => {
