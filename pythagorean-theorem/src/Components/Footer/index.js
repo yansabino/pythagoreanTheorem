@@ -1,6 +1,5 @@
 import React from "react";
 import { FooterContainer } from "../../style/Footer";
-import { Fragment } from "react";
 
 const Footer = () => {
   return (
