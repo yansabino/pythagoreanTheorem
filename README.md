@@ -8,9 +8,9 @@ Sobre a divisão dos arquivos, há dois grandes setores. Os `components` são os
 
 Pythagorean Theorem é uma interface personalizada que realiza o calculo da Hipotenuza de um Triangulo Retângulo inserindo os valores do cateto oposto e do cateto adjacente. Esses valores precisam ser inteiros e positivos para que o calculo possa ser realizado com sucesso. Após o processamento dos dados pelo Back-End, o valor dos dados inseridos são mostrados na página.
 
-- Integrando com a API externa: [API](https://documenter.getpostman.com/view/10236954/SzezdXbz?version=latest)
+- Integrando com a API externa (Método POST): [API](https://atlas-231814.appspot.com/calcula)
 
-- Link para acessar o App: [Site](http://futuretube-yan.s3-website-us-east-1.amazonaws.com/)
+- Link para acessar o App: [Site](http://warlike-tray.surge.sh/)
 
 ## Instruções para rodar
 Por ser um projeto com ReactJS, há a necessidade do NodeJS. 
